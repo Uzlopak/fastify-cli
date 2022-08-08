@@ -1,5 +1,5 @@
 import fastify from 'fastify'
-import example from '..'
+import example from '.'
 import { expectType } from 'tsd'
 
 let app

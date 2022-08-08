@@ -12,7 +12,8 @@
     "unit": "tap \"test/**/*.test.{js,ts}\" \"templates/**/*.test.{js,ts}\" --timeout 120",
     "pretest": "xcopy /e /k /i . \"..\\node_modules\\fastify-cli\" || rsync -r --exclude=node_modules ./ node_modules/fastify-cli || echo 'this is fine'",
     "test": "npm run lint && npm run unit && npm run test:typescript",
-    "test:typescript": "tsd templates/plugin && tsc --project templates/app-ts/tsconfig.json && del-cli templates/app-ts/dist"
+    "test:typescript": "npm run test:typescript:templates:plugin && tsc --project templates/app-ts/tsconfig.json && del-cli templates/app-ts/dist",
+    "test:typescript:templates:plugin": "echo '{ \"types\": \"types/index.d.ts\"}' > templates/plugin/package.json && tsd templates/plugin && rimraf templates/plugin/package.json" 
   },
   "keywords": [
     "fastify",
